@@ -10,3 +10,8 @@ import {BASE_URL} from '../config'
 export  const reqLogin = (value) => {
     return myAxios.post(`${BASE_URL}/login`, value)
  }
+
+ //获取商品列表请求
+ export const reqCategoryList = () => {
+     return myAxios.get(`${BASE_URL}/manage/category/list`)
+ }

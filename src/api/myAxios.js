@@ -2,12 +2,20 @@ import axios from 'axios'
 import qs from 'querystring'
 import NProgress from "nprogress";
 import 'nprogress/nprogress.css'
+import store from '../redux/stores'
+
 
 const instance = axios.create({timeout:4000})
 //请求拦截器
 instance.interceptors.request.use(function (config) {
     //console.log(config);
     NProgress.start()
+    //从redux中获取之前保存的token
+    const {token} = store.getState().userInfo
+    //向请求头中添加信息
+    if(token){
+        config.headers.Authorization = 'atguigu_' + token
+    }
     const {method, data} = config
     //若post请求
     if (method.toLowerCase() === 'post') {
