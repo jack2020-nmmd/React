@@ -3,6 +3,8 @@ import qs from 'querystring'
 import NProgress from "nprogress";
 import 'nprogress/nprogress.css'
 import store from '../redux/stores'
+import { message } from "antd";
+import { createDeleteUserInfoAction } from "../redux/action_creators/login_action";
 
 
 const instance = axios.create({timeout:4000})
@@ -33,6 +35,13 @@ instance.interceptors.response.use( (response) => {
 }, 
 (error) => {
     NProgress.done()
+    if(error.response.status === 401){
+        message.error("身份验证失败，请重新登录", 0.5)
+        //分发一个删除用户身份过期的action
+        store.dispatch(createDeleteUserInfoAction())
+    }else{
+        message.error(error, 0.5)
+    }
     return Promise.reject(error)
 })
 

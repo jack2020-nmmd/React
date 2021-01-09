@@ -32,10 +32,10 @@
   transform: translateX(-50%);
   top: 40px;
   content: '';
-  border-top: 30px solid red;
-  border-right: 30px solid transparent;
-  border-bottom: 30px solid transparent;
-  border-left: 30px solid transparent;
+  border-top: 20px solid white;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 20px solid transparent;
 }
 .header .header-bottom .header-bottom-right {
   float: right;
