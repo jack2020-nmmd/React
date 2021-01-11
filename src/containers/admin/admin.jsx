@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import {Redirect, Route, Switch} from 'react-router-dom'
 import { connect } from "react-redux";
-import { Layout } from 'antd';
+import { Layout} from 'antd';
 import {createDeleteUserInfoAction} from "../../redux/action_creators/login_action";
 import {reqCategoryList} from '../../api'
 import "./css/admin.less";
 import Header from './header/header'
+import LeftNav from './left_nav/left_nav'
 import Home from '../../components/home/home'
 import Category from '../category/category'
 import Bar from '../bar/bar'
@@ -40,7 +41,9 @@ class Admin extends Component{
     }else{
       return(
         <Layout className="admin">
-          <Sider className="sider">Sider</Sider>
+          <Sider className="sider">
+            <LeftNav/>
+          </Sider>
           <Layout>
             <Header/>
             <Content className="content">

@@ -5,7 +5,7 @@ import { Redirect } from "react-router-dom";
 import {createSaveUserInfoAction} from "../../redux/action_creators/login_action";
 import { UserOutlined, LockOutlined} from '@ant-design/icons';
 import "./css/login.less";
-import logo from "./img/logo.png";
+import logo from '../../static/imgs/logo.png';
 import {reqLogin } from '../../api'
 
 //const qs = require("qs")和上面的一样
@@ -54,7 +54,7 @@ class Login extends Component{
   render(){
     const {isLogin} = this.props
     if(isLogin){
-      return <Redirect to='/admin' />
+      return <Redirect to='/admin/home' />
     }else{
       return(
         <div className='login'>

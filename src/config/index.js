@@ -6,3 +6,6 @@ export const WEATHER_KEY = "3p49MVra6urFRGOT9s8UBWr2";
 
 //当前城市位置
 export const CITY = "beijing"
+
+//表格显示列数
+export const PAGE_SIZE = 5

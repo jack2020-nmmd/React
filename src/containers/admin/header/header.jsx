@@ -8,13 +8,17 @@ import dayjs from "dayjs";
 import {createDeleteUserInfoAction} from "../../../redux/action_creators/login_action";
 import './css/header.less'
 import { reqWeather } from "../../../api";
+import menuList from '../../../config/menu_config'
 
 const { confirm } = Modal;
 
 class Header extends Component{
     state = {
         isFull:true,
-        date:dayjs().format('YYYY 年 MM 月 DD日 HH:mm:ss')}
+        date:dayjs().format('YYYY 年 MM 月 DD日 HH:mm:ss'),
+        title:''
+    }
+       
     //给全屏设置监听事件
     componentDidMount(){
         screenfull.on('change', () => {
@@ -24,7 +28,8 @@ class Header extends Component{
         this.timeID = setInterval(() => {
             this.setState({date:dayjs().format('YYYY 年 MM 月 DD日 HH:mm:ss')})
         }, 1000);
-        this.getWeather()
+        this.getWeather();
+        this.getTitle()
     }
     getWeather = ()=>{//因为一般不再生命钩子函数加async说出外面写一个函数
         let result = reqWeather()
@@ -38,6 +43,23 @@ class Header extends Component{
         if(screenfull.isEnabled){
             screenfull.toggle()
         }
+    }
+    //获取标题事件
+    getTitle = () => {
+        let name = this.props.location.pathname.split('/').reverse()[0]
+        let title = ''
+        menuList.map((item) => {
+            if(item.children instanceof Array){
+                let tmp = item.children.find((item2) => {
+                    return item2.key === name
+                })
+                if(tmp) title = tmp.title
+            }else{
+                if(name === item.key) title = item.title
+            }
+        })
+        //this.setState({title})
+        this.setState({title}) 
     }
     //退出登录事件
     layOut = ()=> {
@@ -67,7 +89,7 @@ class Header extends Component{
             </div>
             <div className="header-bottom">
                 <div className="header-bottom-left">
-                    {this.props.location.pathname}
+                    {this.props.title || this.state.title} 
                 </div>
                 <div className="header-bottom-right">
                     {this.state.date}
@@ -82,6 +104,6 @@ class Header extends Component{
 
 //Header = withRouter(Header)
 export default connect(
-    state => ({userInfo:state.userInfo}),
+    state => ({userInfo:state.userInfo, title:state.title}),
     {deleteUserInfo:createDeleteUserInfoAction,}
 )(withRouter(Header))
