@@ -1,6 +1,6 @@
 //项目的菜单配置
 import {AppstoreOutlined, HomeFilled, OrderedListOutlined, ToolFilled, UserOutlined, SafetyCertificateFilled, AreaChartOutlined, BarChartOutlined, LineChartOutlined, PieChartFilled} from '@ant-design/icons';
-export default [
+let menu = [
     {
       title: '首页', // 菜单标题名称
       key: 'home', // 对应的path
@@ -66,4 +66,4 @@ export default [
       ]
     },
   ]
-  
+export default menu

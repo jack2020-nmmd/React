@@ -1,7 +1,7 @@
 //项目所有请求由这个文件
 import myAxios from './myAxios'
-import axios from 'axios'
-import qs from 'querystring'
+//import axios from 'axios'
+//import qs from 'querystring'
 import jsonp from "jsonp";
 import { message } from 'antd'
 import {BASE_URL, WEATHER_KEY, CITY} from '../config'
@@ -32,3 +32,12 @@ export  const reqLogin = (value) => {
     })
     return result 
 }
+
+//新增商品的分类
+export  const reqAddCategory = (categoryName) => {
+    return myAxios.post(`${BASE_URL}/manage/category/add`, {categoryName})
+ }
+//更新商品列表分类
+ export  const reqUpdateCategory = (categoryObj) => {
+    return myAxios.post(`${BASE_URL}/manage/category/update`, categoryObj)
+ }

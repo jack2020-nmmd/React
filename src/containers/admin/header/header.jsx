@@ -32,7 +32,7 @@ class Header extends Component{
         this.getTitle()
     }
     getWeather = ()=>{//因为一般不再生命钩子函数加async说出外面写一个函数
-        let result = reqWeather()
+       reqWeather()
     }
     //页面跳转时组件会卸载，但是定时器还在开
     componentWillUnmount(){
@@ -55,8 +55,9 @@ class Header extends Component{
                 })
                 if(tmp) title = tmp.title
             }else{
-                if(name === item.key) title = item.title
+                if(name === item.key)  title = item.title
             }
+            return title
         })
         //this.setState({title})
         this.setState({title}) 

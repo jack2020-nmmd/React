@@ -1,4 +1,4 @@
-import {AppstoreOutlined, HomeFilled, OrderedListOutlined, ToolFilled, UserOutlined, SafetyCertificateFilled, AreaChartOutlined, BarChartOutlined, LineChartOutlined, PieChartFilled} from '@ant-design/icons';
+//import {AppstoreOutlined, HomeFilled, OrderedListOutlined, ToolFilled, UserOutlined, SafetyCertificateFilled, AreaChartOutlined, BarChartOutlined, LineChartOutlined, PieChartFilled} from '@ant-design/icons';
 import {Menu} from 'antd';
 import {connect} from 'react-redux'
 import {Link, withRouter} from 'react-router-dom'

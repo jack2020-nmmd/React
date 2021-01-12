@@ -3,7 +3,7 @@ import {Redirect, Route, Switch} from 'react-router-dom'
 import { connect } from "react-redux";
 import { Layout} from 'antd';
 import {createDeleteUserInfoAction} from "../../redux/action_creators/login_action";
-import {reqCategoryList} from '../../api'
+//import {reqCategoryList} from '../../api'
 import "./css/admin.less";
 import Header from './header/header'
 import LeftNav from './left_nav/left_nav'
@@ -24,7 +24,7 @@ import USer from '../user/user'
 const {Footer, Sider, Content } = Layout;
 class Admin extends Component{
   componentDidMount(){
-    console.log(this.props);
+    //console.log(this.props);
   }
   logout = () => {
     this.props.deleteUserInfo()
@@ -33,7 +33,7 @@ class Admin extends Component{
 
   //在render里，若想实现跳转，最好用《redirect》
   render(){
-    const {user, token, isLogin} = this.props.userInfo
+    const {isLogin} = this.props.userInfo
     if (!isLogin) {
       /*this.props.history.replace("/login")
       return null*/
