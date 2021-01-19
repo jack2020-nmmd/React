@@ -46,7 +46,11 @@ class Header extends Component{
     }
     //获取标题事件
     getTitle = () => {
-        let name = this.props.location.pathname.split('/').reverse()[0]
+        let {pathname} = this.props.location
+        let name = pathname.split('/').reverse()[0]
+        if (pathname.indexOf('product') !== -1) {
+            name = 'product'
+        }
         let title = ''
         menuList.map((item) => {
             if(item.children instanceof Array){

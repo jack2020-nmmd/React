@@ -41,3 +41,23 @@ export  const reqAddCategory = (categoryName) => {
  export  const reqUpdateCategory = (categoryObj) => {
     return myAxios.post(`${BASE_URL}/manage/category/update`, categoryObj)
  }
+
+ //请求商品分页列表
+ export const reqProductList = (pageNum, pageSize) => {
+    return myAxios.get(`${BASE_URL}/manage/product/list`, {params:{pageNum, pageSize}})
+}
+ //请求更新商品状态
+ export  const reqUpdateProductStatus = (productObj) => {
+    return myAxios.post(`${BASE_URL}/manage/product/updateStatus`, productObj)
+ }
+ //根据name/desc搜索商品的分页列表
+ export const reqSearchProduct= (pageNum, pageSize, searchType, keyWord) => {
+     console.log(pageNum, pageSize, searchType, keyWord);
+             return myAxios.get(`${BASE_URL}/manage/product/search`, {params:{pageNum, pageSize, [searchType]:keyWord}})}
+//  export const reqSearchProduct= (pageNum, pageSize, searchType, keyword) => {
+//     if (searchType === 'name') {
+//         return myAxios.get(`${BASE_URL}/manage/category/list`, {params:{pageNum, pageSize, productName:keyword}})
+//     }else{
+//         return myAxios.get(`${BASE_URL}/manage/category/list`, {params:{pageNum, pageSize, productDesc:keyword}})
+//     }
+// }
