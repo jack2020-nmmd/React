@@ -4,6 +4,7 @@ import {Card,Button,Form,Input,Select,message} from 'antd'
 import {ArrowLeftOutlined} from '@ant-design/icons';
 const {Item} = Form
 const {Option} = Select
+@Form.create()
 class AddUpdate extends Component{
     render(){
         //const {getFieldDecorator} = this.props.form;
@@ -27,14 +28,14 @@ class AddUpdate extends Component{
             >
                 <Item label="商品名称">
                     {
-                        // getFieldDecorator('name', {
-                        // initialValue:this.state.name || '',
-                        // rules: [{required: true, message: '请输入商品名称' }],
-                        // })(
+                        getFieldDecorator('name', {
+                        initialValue:this.state.name || '',
+                        rules: [{required: true, message: '请输入商品名称' }],
+                        })(
                         <Input
                             placeholder="商品名称"
                         />
-                        //)
+                        )
                     }
                 </Item>
                 <Item label="商品描述">
@@ -93,6 +94,7 @@ class AddUpdate extends Component{
         )
     }
     }
+
 export default connect(
     state => {},
     {}
