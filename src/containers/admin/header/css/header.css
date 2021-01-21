@@ -11,19 +11,14 @@
   margin: 0 0 0 10px;
 }
 .header .header-bottom {
-  line-height: 40px;
+  display: flex;
   height: 40px;
-}
-.header .header-bottom::after {
-  content: '';
-  display: block;
-  clear: both;
 }
 .header .header-bottom .header-bottom-left {
   position: relative;
-  float: left;
   width: 25%;
   text-align: center;
+  line-height: 40px;
   font-size: 20px;
 }
 .header .header-bottom .header-bottom-left::after {
@@ -32,19 +27,19 @@
   transform: translateX(-50%);
   top: 40px;
   content: '';
-  border-top: 20px solid white;
+  border-top: 20px solid white ;
+  border-left: 20px solid transparent;
   border-right: 20px solid transparent;
   border-bottom: 20px solid transparent;
-  border-left: 20px solid transparent;
 }
 .header .header-bottom .header-bottom-right {
-  float: right;
-  width: 75%;
   text-align: right;
+  line-height: 40px;
   padding-right: 20px;
+  width: 75%;
 }
 .header .header-bottom .header-bottom-right img {
   width: 30px;
   height: 20px;
-  margin: 0 8px;
+  margin: 0px 8px;
 }

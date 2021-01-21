@@ -44,9 +44,10 @@ class Admin extends Component{
     }else{
       return(
         <Layout className="admin">
-          <Sider className="sider">
+          <Sider className="sider" >
             <LeftNav/>
           </Sider>
+          
           <Layout>
             <Header/>
             <Content className="content">

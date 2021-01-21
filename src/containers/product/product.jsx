@@ -1,11 +1,13 @@
 import React,{Component} from 'react'
 import { Card, Button, Select, Input, Table, message} from 'antd';
 import {PlusCircleFilled} from '@ant-design/icons';
+import {connect} from 'react-redux'
 import {reqProductList, reqUpdateProductStatus, reqSearchProduct} from '../../api'
 import {PAGE_SIZE} from '../../config'
+import {createSaveProductAction} from '../../redux/action_creators/product_action'
 
 const { Option } = Select;
-export default class Product extends Component{
+class Product extends Component{
     state = {
         productList:[],
         total:'',
@@ -35,6 +37,8 @@ export default class Product extends Component{
         //把获取的商品列表存入redux中
         
         }
+        //把获取的商品列表存入redux中
+        this.props.saveProductAction(data.list)
     }
  //更新商品状态
     updateProStatus = async(item) => {
@@ -159,3 +163,10 @@ export default class Product extends Component{
         )
     }
 }
+
+export default connect(
+    state => ({/*productList:state.productList*/}),//这个状态是自己用才写的，自己存进去就不需要写了
+    {
+        saveProductAction:createSaveProductAction,
+    }
+  )(Product)

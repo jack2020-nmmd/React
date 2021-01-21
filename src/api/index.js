@@ -52,8 +52,10 @@ export  const reqAddCategory = (categoryName) => {
  }
  //根据name/desc搜索商品的分页列表
  export const reqSearchProduct= (pageNum, pageSize, searchType, keyWord) => {
-     console.log(pageNum, pageSize, searchType, keyWord);
              return myAxios.get(`${BASE_URL}/manage/product/search`, {params:{pageNum, pageSize, [searchType]:keyWord}})}
+ //根据商品id获取商品信息
+ export const reqProdById= (productId) => {
+    return myAxios.get(`${BASE_URL}/manage/product/info`, {params:{productId}})}
 //  export const reqSearchProduct= (pageNum, pageSize, searchType, keyword) => {
 //     if (searchType === 'name') {
 //         return myAxios.get(`${BASE_URL}/manage/category/list`, {params:{pageNum, pageSize, productName:keyword}})
